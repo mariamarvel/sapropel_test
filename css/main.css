@@ -1,0 +1,738 @@
+/* подключаем фаил сброса стилей */
+@import "./reset.css";
+
+/*fonts*/
+@import url('https://fonts.cdnfonts.com/css/miratrix');
+@import url('https://fonts.cdnfonts.com/css/manrope');
+
+
+body {
+
+    background-color: #F5F5F5;
+}
+
+/* внешний вид для кождого элемента */
+/* .container * {
+    padding: 10px 15px;
+    background-color: aquamarine;
+    border: 1px solid rgb(24, 84, 133);
+    text-align: center;
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+} */
+
+/* Сетка  пишется к грид контейнеру, а элементы выстраиваются в нём */
+.container {
+    /* display: grid; */
+    /* создаём колонки(например 3 колонки по 100px) */
+    /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+    /*repeat(4, 1fr)*/
+    /* создаём ряды(например 3 ряда высотой 100px) */
+    /* grid-template-rows: 100px 100px 100px; */
+
+    /* создаём отступы между колонками */
+    /* grid-column-gap: 30px; */
+    /* создаём отступы между рядами 
+       */
+    /* grid-row-gap: 20px; */
+    /* создаём отступы между рядами и колонками 
+    grid-gap:20px 30px ;*/
+    max-width: 100%;
+    min-width: 320px;
+}
+
+.wrap {
+    max-width: 1400px;
+    min-width: 290px;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.header {
+    background-color: #363636;
+}
+
+.header_top {
+    display: grid;
+    /* сделали его грид контейнером */
+    grid-template-columns: 267px 1fr;
+    /* первая колонка равна ширине логотипа */
+    grid-column-gap: 226px;
+    grid-template-rows: 38px;
+    padding-top: 31px;
+    padding-bottom: 31px;
+    /* align-items:center; */
+}
+
+.logo_link {
+    display: block;
+}
+
+.logo_img {
+    display: block;
+    max-width: 100%;
+}
+
+.menu_list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+
+    flex-wrap: wrap;
+
+}
+
+.menu_item {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin-left: 63px;
+
+
+}
+
+.menu_link {
+    color: #FFFFFF;
+
+    /* для плавного переключения цвета ссылок */
+    transition-property: color;
+    transition-duration: 500ms;
+}
+
+/* опционально */
+.menu_link:hover {
+    color: rgb(158, 179, 179);
+
+}
+
+.phone {
+    margin-left: 45px;
+    /* display: flex;
+    color: #FFFFFF;
+    justify-content: flex-end; */
+    /*!!!!!!! padding-top: 5px; */
+
+
+}
+
+.main_name {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: #363636;
+
+}
+
+.name {
+    text-transform: uppercase;
+
+    margin-top: 96px;
+    margin-left: 260px;
+    width: 544px;
+    height: 115px;
+    left: 50px;
+    top: 96px;
+
+    font-family: 'Miratrix', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 86px;
+    line-height: 115px;
+
+    border-bottom: 1px solid #363636;
+}
+
+.description {
+    width: 1033px;
+    height: 49px;
+    margin-left: 260px;
+    margin-top: 10px;
+
+    font-family: 'Manrope', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 49px;
+}
+
+
+/* KARUSEL*/
+
+.carousel_wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    /* margin-left: 258px; */
+    margin-top: 32px;
+    height: 689px;
+    position: relative;
+    width: 1438px;
+    margin: 0 auto;
+}
+
+.carousel_item {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px 50px;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.arrow {
+    border: solid #363636;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 12px;
+}
+
+.arrow_prev {
+    left: -30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(135deg);
+}
+
+.arrow_next {
+    right: -30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.light {
+    color: white;
+}
+
+
+
+
+/*Select every element*/
+[id^="item"] {
+    display: none;
+}
+
+.item_1 {
+    z-index: 2;
+    opacity: 1;
+    background: url('https://static.pexels.com/photos/6526/sea-beach-holiday-vacation-large.jpg');
+    background-size: cover;
+}
+
+.item_2 {
+    background: url('https://static.pexels.com/photos/6506/alcohol-bar-drinks-party-large.jpg');
+    background-size: cover;
+}
+
+.item_3 {
+    background: url('https://static.pexels.com/photos/6529/lake-kajak-kayak-large.jpg');
+    background-size: cover;
+}
+
+*:target~.item_1 {
+    opacity: 0;
+}
+
+#item_1:target~.item_1 {
+    opacity: 1;
+}
+
+#item_2:target~.item_2,
+#item_3:target~.item_3 {
+    z-index: 3;
+    opacity: 1;
+}
+
+/* Деятельность компании */
+
+.activity {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-left: 260px;
+    margin-right: 260px;
+    color: #363636;
+
+    font-family: 'Miratrix', sans-serif;
+}
+
+.activity_topic {
+    margin-top: 64px;
+
+    width: 533px;
+    height: 48px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+
+    border-bottom: 1px solid #363636;
+}
+
+/* Table */
+.activity_table {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: minmax(140px, auto) minmax(140px, auto);
+    /* row-gap: 10px;
+    column-gap: 10px; */
+
+    margin-top: 20px;
+}
+
+.table {
+    background-color: #F5F5F5;
+    border: 1px solid #363636;
+}
+
+.table:hover {
+    background-color: #FFA34E;
+    color: #FFFFFF;
+}
+
+/* **************цвета не меняются единым блоком *****************/
+.arrow:hover {
+    color: #FFFFFF;
+}
+
+.table_description:hover {
+    color: #FFFFFF;
+}
+
+/* **************************************** */
+
+.cell_1 {
+    /* grid-column: 1 / 2; */
+    grid-row: 1 / 3;
+    background-color: #F5F5F5;
+    border: 1px solid #363636;
+    border-right: 0;
+}
+
+.cell_2 {
+    border-bottom: 0;
+    border-right: 0;
+}
+
+.cell_4 {
+    border-right: 0;
+
+}
+
+.cell_3 {
+    border-bottom: 0;
+}
+
+.table_topic {
+    text-transform: uppercase;
+
+    margin-left: 4%;
+    margin-right: 24.16%;
+    margin-top: 10.67%;
+
+
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+
+}
+
+.table_description {
+
+    margin-right: 20px;
+    margin-left: 4%;
+    margin-top: 9px;
+
+    font-family: 'Manrope';
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #363636;
+}
+
+.arrow {
+    font-family: 'Manrope';
+    /* font-style: normal; */
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 14px;
+    color: #363636;
+    border: none;
+
+    margin-top: 14px;
+    margin-left: 4%;
+}
+
+.arrow_img {
+    transform: rotate(-45deg);
+    height: 10px;
+}
+
+/* Orange line */
+
+/* .orange_line {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #FFA34E;
+    margin-top: 81px;
+    height: 81px;
+
+    
+}
+
+.line_topic {
+    color: #FFFFFF;
+    text-align: center;
+    margin-bottom: 16px;
+    margin-top: 16px;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 49px;
+} */
+
+.block {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    /* flex-direction: row; */
+    /* justify-content: space-between; */
+    /* align-items: flex-start; */
+    padding: 16px 10px;
+    gap: 10px;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    margin-top: 81px;
+    /* margin: 0 auto; */
+    background-color: #FFA34E;
+}
+
+
+.block p {
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 49px;
+
+
+    color: #fff;
+    text-transform: uppercase;
+    padding-top: 16px;
+    margin-top: 16px;
+    animation: text 30s infinite linear;
+    padding-left: 50%;
+    white-space: pre;
+}
+
+@keyframes text {
+    0% {
+        transform: translate(0, 0);
+    }
+
+    100% {
+        transform: translate(-160%, 0);
+    }
+}
+
+/* .block img{
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 49px;
+
+
+    color:#fff;
+    text-transform: uppercase;
+    padding-top: 16px;
+    margin-top: 16px;
+    animation: text 20s infinite linear;
+    padding-left: 50%;
+    white-space: pre;
+  } */
+
+
+/* Наши преимущества */
+
+.advantages {
+    display: grid;
+
+    margin-left: 260px;
+    margin-right: 260px;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    color: #363636;
+}
+
+
+.advantages_topic {
+    margin-top: 64px;
+
+    width: 438px;
+    height: 48px;
+
+    font-family: 'Miratrix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+
+    border-bottom: 1px solid #363636;
+}
+
+.advantages_table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 130px);
+    margin-top: 48px;
+
+    /* border: 1px solid #363636; */
+}
+
+.production {
+    grid-column: 1/3;
+    border: 1px solid #363636;
+    border-bottom: 0;
+
+}
+
+.maintenance {
+    grid-column: 1/3;
+    border: 1px solid #363636;
+    border-bottom: 0;
+}
+
+.experience {
+    grid-column: 1/3;
+    border: 1px solid #363636;
+    border-bottom: 0;
+}
+
+.innovation {
+    grid-column: 1/3;
+    border: 1px solid #363636;
+    border-bottom: 0;
+}
+
+.scurf {
+    grid-column: 1/3;
+    border: 1px solid #363636;
+}
+
+/* .years{
+    grid-row: 3/5;
+    border:1px solid #363636;
+} */
+
+
+/* содержание таблицы */
+
+.general_topic {
+    /* width: 506px;
+    height: 44px; */
+
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 44px;
+    margin-left: 8px;
+
+    text-transform: uppercase;
+}
+
+.general_article {
+    /* width: 651px;
+    height: 78px; */
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    margin-left: 8px;
+}
+
+.years_40 {
+    grid-column-start: 3;
+    grid-row-start: 2;
+
+    font-family: 'Miratrix';
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: right;
+
+}
+
+.years {
+    grid-column-start: 3;
+    grid-row-start: 2;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: right;
+}
+
+.patent_45 {
+    grid-column-start: 4;
+    grid-row-start: 2;
+
+    font-family: 'Miratrix';
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: right;
+
+}
+
+.patent {
+    grid-column-start: 4;
+    grid-row-start: 2;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: right;
+}
+
+.model_3 {
+    grid-column-start: 3;
+    grid-row-start: 4;
+
+    font-family: 'Miratrix';
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: right;
+
+}
+
+.model {
+    grid-column-start: 3;
+    grid-row-start: 4;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: right;
+}
+
+.more_50 {
+    grid-column-start: 4;
+    grid-row-start: 4;
+
+    font-family: 'Miratrix';
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: right;
+
+}
+
+.more {
+    grid-column-start: 4;
+    grid-row-start: 4;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 33px;
+    text-align: right;
+}
+
+.partners {
+    display: grid;
+    margin-left: 260px;
+    margin-right: 260px;
+    margin-top: 146px;
+    color: #363636;
+}
+
+.partners_topic {
+    margin-top: 64px;
+
+    width: 370px;
+    height: 48px;
+
+    font-family: 'Miratrix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+
+    border-bottom: 1px solid #363636;
+}
+
+.partners_lenta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 150px;
+
+    margin-top: 58px;
+    margin-bottom: 97px;
+}
+
+.lenta {
+    border: 1px solid #363636;
+    border-right: 0;
+}
+
+.lenta_4 {
+    border: 1px solid #363636;
+}
+
+/* FEEDBACK */
+
+.feedback {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 450px;
+}
+
+.questions {
+    background-color: #FFA34E;
+}
+
+.questions_topic {
+    margin-left: 260px;
+    margin-top: 74px;
+
+    font-family: 'Miratrix';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+
+    color: #FFFFFF;
+}
+
+.questions_article {
+    width: 488px;
+    height: 95px;
+    margin-left: 260px;
+    margin-top: 12px;
+
+    font-family: 'Manrope';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #FFFFFF;
+}
